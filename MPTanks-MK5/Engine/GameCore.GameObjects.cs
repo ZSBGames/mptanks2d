@@ -30,14 +30,18 @@ namespace MPTanks.Engine
             }
 
             if (creator == null)
+            {
                 if (GlobalSettings.Debug)
                     Logger.Trace("Object created: " + $"{obj.GetType().FullName}" +
                     $"[{obj.ObjectId}]. Authorized: {authorized}");
-                else
+            }
+            else
+            {
                 if (GlobalSettings.Debug)
                     Logger.Trace("Object created: " + $"{obj.GetType().FullName}" +
                         $"[{obj.ObjectId}]. Created by {creator.GetType().FullName}" +
                         $"[{creator.ObjectId}]. Authorized: {authorized}");
+            }
 
             if (_inUpdateLoop) //In update loop, wait a frame.
             {
@@ -67,14 +71,18 @@ namespace MPTanks.Engine
             }
 
             if (destructor == null)
+            {
                 if (GlobalSettings.Debug)
                     Logger.Trace("Object destroyed: " + $"{obj.GetType().FullName}" +
                     $"[{obj.ObjectId}]. Authorized: {authorized}");
-                else
+            }
+            else
+            {
                 if (GlobalSettings.Debug)
                     Logger.Trace("Object destroyed: " + $"{obj.GetType().FullName}" +
                     $"[{obj.ObjectId}]. Destroyed by {destructor.GetType().FullName}" +
                     $"[{destructor.ObjectId}]. Authorized: {authorized}");
+            }
 
             //Sanity checks
             bool found = _gameObjects.ContainsValue(obj) || _addQueue.Contains(obj);

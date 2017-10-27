@@ -1396,7 +1396,7 @@ namespace Mono.Options
                 do
                 {
                     start = description.IndexOf(nameStart[i], j);
-                } while (start >= 0 && j != 0 ? description[j++ - 1] == '{' : false);
+                } while (start >= 0 && (j != 0 ? description[j++ - 1] == '{' : false));
                 if (start == -1)
                     continue;
                 int end = description.IndexOf("}", start);
